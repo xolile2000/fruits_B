@@ -17,4 +17,4 @@ addons:
   postgresql: '12.8'
   apt:
     packages:
-      - postgresql-server-dev-12.8
+      - postgresql-server-dev-9.4

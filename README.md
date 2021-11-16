@@ -1,1 +1,1 @@
-[![Build Status](https://app.travis-ci.com/xolile2000/fruit_basket.svg?branch=master)](https://app.travis-ci.com/xolile2000/fruit_basket)
+[![Build Status](https://app.travis-ci.com/xolile2000/fruits_B.svg?branch=master)](https://app.travis-ci.com/xolile2000/fruits_B)

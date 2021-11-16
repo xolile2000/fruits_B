@@ -7,15 +7,15 @@ services:
   - postgresql
 
 env:
-  - 'DATABASE_URL=postgresql://postgres@localhost:5432/fruitBasket';
+  - 'DATABASE_URL=postgresql://postgres@localhost:5432/fruitBaskets';
 
 before_script:
-  - psql -c 'create database fruitBasket;' -U postgres
-  - psql -U postgres -d fruitBasket -a -f fruits.sql
+  - psql -c 'create database fruitBaskets;' -U postgres
+  - psql -U postgres -d fruitBaskets -a -f fruits.sql
 
 
-# addons:
-#   postgresql: '12.8'
-#   apt:
-#     packages:
-#       - postgresql-server-dev-9.4
+addons:
+  postgresql: '12.8'
+  apt:
+    packages:
+      - postgresql-server-dev-9.4

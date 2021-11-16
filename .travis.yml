@@ -12,9 +12,9 @@ before_script:
 
 services:
   - postgresql
-  
-addons:
-  postgresql: '12.8'
-  apt:
-    packages:
-      - postgresql-server-dev-9.4
+
+# addons:
+#   postgresql: '12.8'
+#   apt:
+#     packages:
+#       - postgresql-server-dev-9.4

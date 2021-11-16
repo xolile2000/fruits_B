@@ -6,8 +6,14 @@ env:
   - DATABASE_URL=postgresql://postgres@localhost:5432/fruitBasket
 
 before_script:
+ - npm install
   - psql -c 'create database fruitBasket;' -U postgres
   - psql -U postgres -d fruitBasket -a -f fruits.sql
 
 services:
-  -postgresql
+  - postgresql
+addons:
+  postgresql: '9.4'
+  apt:
+    packages:
+      - postgresql-server-dev-9.4

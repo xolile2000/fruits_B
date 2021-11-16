@@ -16,10 +16,11 @@ beforeEach(async function(){
 
 describe('fruit basket', function(){
 
-    it('should create new fuit basket for each type,qty,price', async function(){
+    it('should create new banana fuit basket for each type,qty,price', async function(){
         let baskets = fruitbasket(pool)
 
         await baskets.newBasket('banana',20,40);
+        
 
         assert.deepEqual([
             {
@@ -30,8 +31,23 @@ describe('fruit basket', function(){
           ]
           ,await baskets.allFruit('banana'));
     });
+    it('should create new orange fuit basket for each type,qty,price', async function(){
+        let baskets = fruitbasket(pool)
 
-    it('should find all the fruit basket for each fruit type', async function(){
+        await baskets.newBasket('oranges',10,15);
+        
+
+        assert.deepEqual([
+            {
+              fruit: 'oranges',
+              price: 'R15.00',
+              qty: 10
+            }
+          ]
+          ,await baskets.allFruit('oranges'));
+    });
+
+    it('should find all the fruit basket for each fruit type apple', async function(){
 
 
         let baskets = fruitbasket(pool)
@@ -48,12 +64,29 @@ describe('fruit basket', function(){
           ,await baskets.allFruit('apple'));
     });
 
+    it('should find all the fruit basket for each fruit type peach', async function(){
 
-    it('should update qty for a given basket', async function(){
+
+        let baskets = fruitbasket(pool)
+        await baskets.newBasket('peach',5,10);
+
+    
+        assert.deepEqual([
+            {
+              fruit: 'peach',
+              price: 'R10.00',
+              qty: 5
+            }
+          ]
+          ,await baskets.allFruit('peach'));
+    });
+
+    it('should update qty for a given basket mango', async function(){
         let baskets = fruitbasket(pool)
 
         await baskets.newBasket("mango",30,40)
         await baskets.update("mango",10)
+       
 
         assert.deepEqual([{
             fruit: 'mango',
@@ -64,12 +97,64 @@ describe('fruit basket', function(){
 
     });
 
-    it('should display the total of a fruit basket', async function(){
+    it('should display the total of a fruit basket apple', async function(){
         let baskets = fruitbasket(pool)
+       
+        
+        await baskets.newBasket("apple",10,20)
+       const price = await baskets.total('apple',20)
+        
 
-        await baskets.total()
+        assert.deepEqual([
+            {
+              fruit: 'apple',
+              price: 'R20.00'
+            }
+          ], await price);
 
-        assert.equal([],await baskets.allFruit());
+    });
+    it('should display the total of a fruit basket cocopine', async function(){
+        let baskets = fruitbasket(pool)
+       
+        
+        await baskets.newBasket("cocopine",15,30)
+       const price = await baskets.total('cocopine',30)
+        
+
+        assert.deepEqual([
+            {
+              fruit: 'cocopine',
+              price: 'R30.00'
+            }
+          ], await price);
+
+    });
+    it('should show the sum of the total of the fruit baskets for a given fruit type mango', async function(){
+        let baskets = fruitbasket(pool)
+        
+        await baskets.newBasket("mango",30,40)
+        await baskets.newBasket("mango",30,40)
+       const total = await baskets.totalSum("mango")
+
+
+        assert.deepEqual([{
+               "sum": 60
+              }]
+      ,await total);
+
+    });
+    it('should show the sum of the total of the fruit baskets for a given fruit type apple', async function(){
+        let baskets = fruitbasket(pool)
+        
+        await baskets.newBasket("apple",20,30)
+        await baskets.newBasket("apple",20,30)
+       const total = await baskets.totalSum("apple")
+
+
+        assert.deepEqual([{
+               "sum": 40
+              }]
+      ,await total);
 
     });
 

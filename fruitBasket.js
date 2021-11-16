@@ -13,18 +13,23 @@ module.exports = function fruitBasket(pool){
         await pool.query(`update fruit_basket set qty = qty + $2 where fruit =$1`,[fruit,qty])
      }
 
-     const total = async()=>{
-         var price = await pool.query(`select sum(price) from fruit_basket`)
-         return price.rowCount
+     const total = async(fruit,price)=>{
+         var price = await pool.query(`select fruit,price from fruit_basket where fruit = $1 and price = $2 `,[fruit,price])
+         return price.rows
      }
     //  show total of qty
+    const totalSum = async(fruit)=>{
+       var qty = await pool.query(`select sum(qty)from fruit_basket where fruit = $1`,[fruit])
+       return qty.rows
+    }
 
 
     return{
         newBasket, 
         allFruit,
         update,
-        total
+        total,
+        totalSum
     }
 }
 

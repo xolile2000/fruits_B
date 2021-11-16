@@ -10,7 +10,7 @@ before_script:
 services:
   - postgresql
 addons:
-  postgresql: '9.4'
+  postgresql: '12.8'
   apt:
     packages:
       - postgresql-server-dev-9.4

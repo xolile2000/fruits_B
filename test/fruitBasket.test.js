@@ -3,7 +3,7 @@ const fruitbasket = require('../fruitBasket');
 const pg = require("pg");
 const Pool = pg.Pool;
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@localhost:5432/fruitBasket';
+const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@localhost:5432/fruit_b';
 
 const pool = new Pool({
     connectionString

@@ -25,7 +25,7 @@ describe('fruit basket', function(){
         assert.deepEqual([
             {
               fruit: 'banana',
-              price: 'R40.00',
+              price: '$40.00',
               qty: 20
             }
           ]
@@ -40,7 +40,7 @@ describe('fruit basket', function(){
         assert.deepEqual([
             {
               fruit: 'oranges',
-              price: 'R15.00',
+              price: '$15.00',
               qty: 10
             }
           ]
@@ -57,7 +57,7 @@ describe('fruit basket', function(){
         assert.deepEqual([
             {
               fruit: 'apple',
-              price: 'R15.00',
+              price: '$15.00',
               qty: 10
             }
           ]
@@ -74,7 +74,7 @@ describe('fruit basket', function(){
         assert.deepEqual([
             {
               fruit: 'peach',
-              price: 'R10.00',
+              price: '$10.00',
               qty: 5
             }
           ]
@@ -90,7 +90,7 @@ describe('fruit basket', function(){
 
         assert.deepEqual([{
             fruit: 'mango',
-            price: 'R40.00',
+            price: '$40.00',
             qty: 40
           }
         ],await baskets.allFruit("mango"));
@@ -108,7 +108,7 @@ describe('fruit basket', function(){
 
         assert.deepEqual([
           {
-            sum: 'R40.00'
+            sum: '$40.00'
           }
         ]
         , await price);
@@ -128,7 +128,7 @@ describe('fruit basket', function(){
 
         assert.deepEqual([
           {
-            sum: 'R90.00'
+            sum: '$90.00'
           }
         ]
         , await price);

@@ -8,7 +8,7 @@ node_js:
 
 before_script:
   - psql -c 'create database  fruitBasket;' -U postgres
-  - psql -U postgres -d fruitBasket -a -f tables.sql
+  - psql -U postgres -d fruitBasket -a -f fruits.sql
 
 services:
   - postgresql

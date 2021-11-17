@@ -25,7 +25,7 @@ describe('fruit basket', function(){
         assert.deepEqual([
             {
               fruit: 'banana',
-              price: '$40.00',
+              price: 'R40.00',
               qty: 20
             }
           ]
@@ -40,7 +40,7 @@ describe('fruit basket', function(){
         assert.deepEqual([
             {
               fruit: 'oranges',
-              price: '$15.00',
+              price: 'R15.00',
               qty: 10
             }
           ]
@@ -57,7 +57,7 @@ describe('fruit basket', function(){
         assert.deepEqual([
             {
               fruit: 'apple',
-              price: '$15.00',
+              price: 'R15.00',
               qty: 10
             }
           ]
@@ -74,7 +74,7 @@ describe('fruit basket', function(){
         assert.deepEqual([
             {
               fruit: 'peach',
-              price: '$10.00',
+              price: 'R10.00',
               qty: 5
             }
           ]
@@ -90,7 +90,7 @@ describe('fruit basket', function(){
 
         assert.deepEqual([{
             fruit: 'mango',
-            price: '$40.00',
+            price: 'R40.00',
             qty: 40
           }
         ],await baskets.allFruit("mango"));
@@ -102,15 +102,16 @@ describe('fruit basket', function(){
        
         
         await baskets.newBasket("apple",10,20)
-       const price = await baskets.total('apple',20)
+        await baskets.newBasket("apple",10,20)
+       const price = await baskets.total('apple')
         
 
         assert.deepEqual([
-            {
-              fruit: 'apple',
-              price: '$20.00'
-            }
-          ], await price);
+          {
+            sum: 'R40.00'
+          }
+        ]
+        , await price);
 
     });
     it('should display the total of a fruit basket cocopine', async function(){
@@ -118,15 +119,19 @@ describe('fruit basket', function(){
        
         
         await baskets.newBasket("cocopine",15,30)
-       const price = await baskets.total('cocopine',30)
+        await baskets.newBasket("cocopine",15,30)
+        await baskets.newBasket("cocopine",15,30)
+        
+       const price = await baskets.total('cocopine')
+
         
 
         assert.deepEqual([
-            {
-              fruit: 'cocopine',
-              price: '$30.00'
-            }
-          ], await price);
+          {
+            sum: 'R90.00'
+          }
+        ]
+        , await price);
 
     });
     it('should show the sum of the total of the fruit baskets for a given fruit type mango', async function(){
